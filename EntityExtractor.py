@@ -1,0 +1,2 @@
+class EntitityExtractor():
+    pass
