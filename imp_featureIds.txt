@@ -1,0 +1,226 @@
+/*====================================================================================
+MOST IMPORTANT WORDS BY CATEGORY
+=====================================================================================*/
+
+
+business
+economic,  tax,  amp,  executive,  inflation,  chief,  investors,  new,  report,  rates,  prices,  government,  markets,  pay,  tesco,  price,  group,  sales,  financial,  economy,  op,  shares,  market,  year,  company,  growth,  uk,  said,  bank,  business, 
+ 
+football
+games,  everton,  madrid,  bayern,  mourinho,  play,  champions league,  arsenal,  premier,  premier league,  final,  champions,  cup,  win,  said,  moyes,  goal,  manchester,  game,  manager,  players,  team,  city,  chelsea,  liverpool,  united,  club,  season,  league,  football, 
+ 
+sport
+new,  going,  players,  like,  ve,  play,  match,  round,  won,  ball,  good,  coach,  cricket,  world,  day,  rugby,  just,  second,  cup,  final,  win,  season,  race,  year,  time,  team,  game,  said,  england,  sport, 
+ 
+technology
+devices,  twitter,  smartphone,  amazon,  use,  windows,  like,  music,  games,  said,  internet,  microsoft,  iphone,  software,  game,  apps,  data,  phone,  samsung,  people,  mobile,  new,  android,  facebook,  app,  users,  apple,  company,  google,  technology, 
+ 
+tv-and-radio
+way,  life,  know,  family,  man,  fargo,  men,  game thrones,  thrones,  hbo,  film,  comedy,  time,  shows,  good,  drama,  television,  channel,  people,  itv,  don,  new,  just,  like,  series,  bbc,  episode,  tv radio,  radio,  tv, 
+ 
+world
+killed,  officials,  south,  000,  steenkamp,  years,  political,  party,  military,  security,  says,  court,  north,  kiev,  told,  new,  president,  year,  minister,  country,  state,  police,  russia,  pistorius,  ukraine,  russian,  people,  government,  said,  world, 
+ 
+
+ 
+
+/*====================================================================================
+WRONGLY CLASSIFIED FOLK (DOCS)
+=====================================================================================*/
+
+
+Amazon UK boss_ How can following the law be unfair_.txt
+Actual Class = technology
+business
+ 
+Barrett Brown lawyer_ US tried to 'kill a fly with a sledgehammer'.txt
+Actual Class = technology
+world
+ 
+Call of Duty v the planet_ inside the world of competitive gaming.txt
+Actual Class = technology
+football
+ 
+Cricket T20 World cup finals day honoured by Google Doodle.txt
+Actual Class = technology
+sport
+ 
+EU court of justice overturns law that would enable 'snoopers' charter'.txt
+Actual Class = technology
+world
+ 
+Facebook founder Mark Zuckerberg's base salary falls to $1.txt
+Actual Class = technology
+business
+ 
+Facebook removes page of preacher using social media to back jihadists.txt
+Actual Class = technology
+world
+ 
+Football Manager sim predicts how the season will end. Spoiler alert!.txt
+Actual Class = technology
+football
+ 
+Google Maps Russia claims Crimea for the federation.txt
+Actual Class = technology
+world
+ 
+How Jann Mardenborough went from Gran Turismo on a PlayStation to being a racing driver.txt
+Actual Class = technology
+sport
+ 
+Lavabit loses contempt of court appeal over Edward Snowden encryption keys.txt
+Actual Class = technology
+world
+ 
+Ma faces test of Alibaba's magic with listing on stock exchange.txt
+Actual Class = technology
+world
+ 
+Marin Lombard_ bike review.txt
+Actual Class = technology
+sport
+ 
+Maserati Ghibli_ car review.txt
+Actual Class = technology
+sport
+ 
+Nintendo Pocket Football Club - review.txt
+Actual Class = technology
+football
+ 
+Oscar - how one developer wants to change game design forever.txt
+Actual Class = technology
+football
+ 
+The identity paradox_ why game characters are not us, but should be.txt
+Actual Class = technology
+football
+ 
+Tracy Morgan takes questions on Reddit_ 'If you love me, I love you back'.txt
+Actual Class = technology
+sport
+ 
+Trouble with Russia, trouble with the law_ inside Europe___s digital crime unit.txt
+Actual Class = technology
+world
+ 
+Who are Silicon Valley's biggest earners_.txt
+Actual Class = technology
+business
+ 
+A day in the life of Channel 4 News.txt
+Actual Class = tv-and-radio
+sport
+ 
+British cartoons boom as industry is reanimated by tax relief deal.txt
+Actual Class = tv-and-radio
+world
+ 
+Digital Human - radio review.txt
+Actual Class = tv-and-radio
+world
+ 
+Double J_ vintage, reassuring, and kicking off with Nick Cave.txt
+Actual Class = tv-and-radio
+football
+ 
+Five reasons why Dan Harmon had to return to Community.txt
+Actual Class = tv-and-radio
+football
+ 
+From YouTube to Vice - 10 trends that are changing how we watch TV.txt
+Actual Class = tv-and-radio
+world
+ 
+Game of Thrones brings its magic to Northern Ireland's economy.txt
+Actual Class = tv-and-radio
+world
+ 
+Game Of Thrones_ the travel guide.txt
+Actual Class = tv-and-radio
+world
+ 
+How I Met Your Mother_ the latest show to fail in the search for a perfect ending.txt
+Actual Class = tv-and-radio
+football
+ 
+How to Get a Council House_ Party House - TV review.txt
+Actual Class = tv-and-radio
+football
+ 
+Invasion of the Job Snatchers_ Kim Philby - His Most Intimate Betrayal - TV review.txt
+Actual Class = tv-and-radio
+football
+ 
+Jamie Dornan_ 'I'd like to stop tying women up'.txt
+Actual Class = tv-and-radio
+football
+ 
+Jockey School_ Alexander Armstrong's Real Ripping Yarns - TV review.txt
+Actual Class = tv-and-radio
+sport
+ 
+John Oliver turns the screw on Keith Alexander - and saves his new show.txt
+Actual Class = tv-and-radio
+world
+ 
+Late Night_ Craig Ferguson in line to be the new David Letterman.txt
+Actual Class = tv-and-radio
+football
+ 
+LBC_ from heartbreak to banter to political hot potatoes.txt
+Actual Class = tv-and-radio
+sport
+ 
+Mad Men's season seven episode one_ changing Time Zones.txt
+Actual Class = tv-and-radio
+football
+ 
+My favourite TV show_ University Challenge.txt
+Actual Class = tv-and-radio
+sport
+ 
+Parking Mad_ Posh Pawn_ Protecting Our Parents - TV review.txt
+Actual Class = tv-and-radio
+football
+ 
+Personal problems_ Relax! Rust Cohle, agony uncle, is here to help.txt
+Actual Class = tv-and-radio
+football
+ 
+Restaurant Wars_ The Battle for Manchester_ The Wonder of Bees - TV review.txt
+Actual Class = tv-and-radio
+football
+ 
+The Agony of Modern Manners and 24_ don't you hate it when that happens_.txt
+Actual Class = tv-and-radio
+football
+ 
+The Crimson Field_ Return of the Black Death_ Secret History - TV review.txt
+Actual Class = tv-and-radio
+sport
+ 
+The Guess List_ Dirty Weekenders in France_ Amazing Greys - TV review.txt
+Actual Class = tv-and-radio
+sport
+ 
+The Voice's Jermain Jackman_ 'David Cameron is a good guy, but I don't like his policies'.txt
+Actual Class = tv-and-radio
+football
+ 
+The World's Dirtiest River TV review - A visit to a paradise under threat.txt
+Actual Class = tv-and-radio
+world
+ 
+Warren United_ New Worlds - TV review.txt
+Actual Class = tv-and-radio
+football
+ 
+Westeros' longest war is starting to look a lot like America's.txt
+Actual Class = tv-and-radio
+world
+ 
+Women still vastly outnumbered by men on UK radio and TV news.txt
+Actual Class = tv-and-radio
+world

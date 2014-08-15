@@ -1,4 +1,6 @@
 import Classifier
 
 nbClassifier = Classifier.Classifier()
-classifier = nbClassifier.nbTrain('docs/training/')
+clf = nbClassifier.SK_NB_train('docs/training/')
+
+

@@ -13,7 +13,7 @@ class FileHandler():
     def loadDirs(self, myDir, labelled = False):
         docs = []
         basepath = os.getcwd()
-        print "Loading files..."
+        print "Loading test data..." if labelled == False else "Loading training data..."
         for subdir, dirs, files in os.walk(myDir):
             os.chdir(subdir)
             
@@ -21,6 +21,8 @@ class FileHandler():
                 fo = open(file, 'r')
                 
                 content = fo.read()
+                if not content:
+                    continue
                 doc = Doc.Document(file, content)
                 if (labelled):
                     doc.category = subdir.split("/")[-1]
