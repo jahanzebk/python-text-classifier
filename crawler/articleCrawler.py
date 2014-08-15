@@ -43,22 +43,23 @@ def cleantags(article):
 
 def analyzeArticlesFromList():
     fo = open("links.txt", "r")
+    os.chdir("docs/testing/")
     print(os.getcwd())
     with fo as f:
       for line in f:
         #print(line),  
         category = line.split('/')[3] # CATEGORY NAME
-        if (category == "business"):
+        if (category == "sport"):
             articleInfo = getArticleInfo(line)
             
-            if (articleInfo == False):
+            if (articleInfo is False):
                 continue
             print(articleInfo[0])
             try :
-                fw = open("business/" + articleInfo[0] + ".txt", "w")
-            except IOError:
-                print("Unable to open previous article. IOError")
-                continue;
+                fw = open("sport/" + articleInfo[0] + ".txt", "w")
+            except IOError, e:
+                print("Unable to open previous article. IOError. %s" % e)
+                continue
             
             fw.write(category + "\n \n")
             rawarticle = articleInfo[1]
@@ -68,7 +69,7 @@ def analyzeArticlesFromList():
             
         
 def main():
-    os.chdir("../../Corpus")
+    
     analyzeArticlesFromList()
     #articleInfo = getArticleInfo("http://www.theguardian.com/football/picture/2014/apr/01/footballviolence-photography")
     #title = articleInfo[0]
@@ -79,6 +80,6 @@ def main():
     #print(title)
     #print(article)
     
-main();
+main()
 
 

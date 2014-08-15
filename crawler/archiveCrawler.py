@@ -1,4 +1,4 @@
-from readability.readability import Document
+# from readability.readability import Document
 import urllib2
 import re
 import time
@@ -21,11 +21,11 @@ def crawlGuardianArchives():
     categories = ("news", "sport", "culture", "business", "money", "lifeandstyle", "travel", "environment", "technology", "tv-and-radio")
     for i in categories:
         #time.sleep(10)
-        for j in range(2, 31):
+        for j in range(2, 10):
             if (j < 10):
-                getGuardianArchivesLinks("http://www.theguardian.com/" + i + "/2014/apr/0" + str(j) + "/all")
+                getGuardianArchivesLinks("http://www.theguardian.com/" + i + "/2014/jul/0" + str(j) + "/all")
             else:
-                getGuardianArchivesLinks("http://www.theguardian.com/" + i + "/2014/apr/" + str(j) + "/all")
+                getGuardianArchivesLinks("http://www.theguardian.com/" + i + "/2014/jul/" + str(j) + "/all")
 
 
 def getGuardianArchivesLinks(url):
@@ -35,17 +35,19 @@ def getGuardianArchivesLinks(url):
     soup = BeautifulSoup(html)
     
     data = soup.findAll('div',attrs={'class':'trail'});
+    fo = open("links.txt", "a")
     for h3 in data:
         links = h3.findAll('a')
         for a in links:
             if a.parent.name  == "h3":
-                writeToFile(a['href'])
+                print(a['href'])
+                fo.write(a['href'] + "\n")
                 
         
 def main():
-    os.chdir("../../Corpus")
-    #crawlGuardianArchives()  #THEY HAVE BEEN CRAWLED, NOW WORK WITH THE LINKS FILE
+    #os.chdir("../../Corpus")
+    crawlGuardianArchives()  #THEY HAVE BEEN CRAWLED, NOW WORK WITH THE LINKS FILE
     
-main();
+main()
 
 
