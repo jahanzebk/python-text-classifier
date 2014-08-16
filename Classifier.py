@@ -14,13 +14,17 @@ class Classifier():
         
         print "Extracting Features..."
         docCats = [doc.category for doc in docs]
+        uniqueCats = self.uniqify(docCats)
         [tfidfVec, tfidfs] = TP.SK_NB_calcTFIDFs(docs, True, False)
+        
+        del(docs)
         
         clf = MultinomialNB(fit_prior=False)
         clf.fit(tfidfs, docCats)
         print "Classifier trained."
         
-        self.SK_NB_accuracy(clf, tfidfVec, docs)
+        
+        self.SK_NB_accuracy(clf, tfidfVec, None, False, True, uniqueCats)
         save = raw_input("Would you like to pickle (save) classifier and TFIDFs? (y|n): ")
         
         if (save == 'y'):
@@ -50,38 +54,47 @@ class Classifier():
         del(rawDocs)
         
         if (showMistakes):
-            for i in range(len(testDocs)):
-                prediction = clf.predict(tfidfs[i])[0]
-                if (testDocs[i].category != prediction):
-                    print testDocs[i].title
-                    print "Actual Class = " + testDocs[i].category
-                    print prediction
-                    print ' '
+            self.showMistakes(clf, testDocs, tfidfs, class_labels)
+            
         # Clean up            
         del(testDocs)
                     
         if (showImpWords):
-            self.printImpWords(tfidfVec, clf, trainDocs, 'docs/training/', class_labels, 50)
+            self.printImpWords(tfidfVec, clf, None, class_labels, 50)
             
-        print "Accuracy: "
-        print clf.score(tfidfs, docCats)
+        print "Accuracy: ", clf.score(tfidfs, docCats) * 100
         
         # Clean up            
         del(docCats)
+        
+    def showMistakes(self, clf, testDocs, tfidfs, class_labels):
+        for i in range(len(testDocs)):
+            prediction = clf.predict(tfidfs[i])[0]
+            if (testDocs[i].category != prediction):
+                print testDocs[i].title
+                print "Actual Class = ", testDocs[i].category
+                print "Predicted Class = ", prediction
+                if class_labels is not None:
+                    predictions = clf.predict_proba(tfidfs[i])
+                    for i in range(len(predictions)):
+                        print class_labels, " : " 
+                        print predictions, ", "
+                print ' '
 
-    def printImpWords(self, vectorizer, clf, trainDocs = None, trainDir = None, class_labels = None, numWords = 10):
+    def printImpWords(self, vectorizer, clf, trainDir = None, class_labels = None, numWords = 10):
         import numpy as np
         """Prints features with the highest coefficient values, per class"""
         print "Most important features:"
         print "..."  
-        if trainDocs is None and trainDir is not None:
+        if trainDir is not None and class_labels is None:
             myFH = FH.FileHandler()
             trainDocs = myFH.loadDirs(trainDir, True)
-        elif trainDocs is None and trainDir is None:
+        elif trainDir is None and class_labels is None:
             import sys
-            sys.exit("Error: either pass training documents or a directory of training data to printImpWords()")
+            sys.exit("Error: either pass training documents or a directory of training data or list of classes to printImpWords()")
             
-        class_labels = self.uniqify([doc.category for doc in trainDocs])
+        if class_labels is None: 
+            class_labels = self.uniqify([doc.category for doc in trainDocs])
         feature_names = vectorizer.get_feature_names()
         for i, class_label in enumerate(class_labels):
             try:

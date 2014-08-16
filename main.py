@@ -55,6 +55,11 @@ def fullAnalysisOLD(currSetDir):
     
     
 def fullAnalysis(currSetDir):
+    test_SK_NB_classification()
+    
+   
+   
+def test_SK_NB_classification():
     dir = "docs/testing/" # actual dir will be build from args (docs/userID/setID dir)
     nbClassifier = Classifier.Classifier()
     myFH = FH.FileHandler()
@@ -67,29 +72,36 @@ def fullAnalysis(currSetDir):
     
     print "Loading Classifier."
     clf = joblib.load("pickles/SK_classifier.pkl")
-    nbClassifier.printImpWords(tfidfVec, clf, 'docs/training/', 50)
-    
-    for i in range(len(testDocs)):
-        prediction = clf.predict(tfidfs[i])[0]
-        if (testDocs[i].category != prediction):
-            print testDocs[i].title
-            print "Actual Class = " + testDocs[i].category
-            print prediction
-            print ' '
+    nbClassifier.printImpWords(tfidfVec, clf, None, clf.classes_, 50)
+    nbClassifier.showMistakes(clf, testDocs, tfidfs, clf.classes_)
     print "Accuracy: "
     print clf.score(tfidfs, docCats)
     
-      
-#    todo list: make SGDClassifier, test it, 
-#    then fix up NLTK classifiers make sure they work with joblib, 
-#    then fit in bhais sentiment analysis
-#  ================== DONE ================= also, optimize training function to write classifier pkl file, remove it from RAM, then make tfidf pkl
-#  ================== DONE ================= testing function before writing both pickle files that returns accuracy and confirms if you want to write it
-# ================== DONE ================= also check most useful features of the classifier and check how useful game of thrones is as a feature
- #     also, crawl for seperate test data and document code
-#     figure out with partial_fit 
+    
+#     todo list:  
+#     organize pickles
+#     find precision recall and f score in accuracy functions and maybe try use it to make better decisions
+#     use pipeline instead
+#     look into the hashingVector big data problem
+#     figure out with partial_fit
+#     make SGDClassifier, test it
+#     then fix up NLTK classifiers make sure they work with joblib, 
+#     look into a hiearichal classification with partial_fit()
+#     give accuracy on a test set, keep sperate test sets eg first10daysofJuly
+#     make a proper training data thing
 #     a classify_unlabelled function that will run for the acutal app
-
+#     use nltk features to test and increase accuracy e.g stemming, collocations
+#     make a function that checks accuracy by setting a documents class to itsmost probable 2/3
+#     look into a hiearichal classification with partial_fit()
+#     be able to search which category a word probably belongs to
+#     then fit in bhais sentiment analysis
+#     make entiityExtraction after all these
+#     
+#     ================== DONE =================  make trainDocs in classifier not an option, just class_labels
+#     ================== DONE ================= also, optimize training function to write classifier pkl file, remove it from RAM, then make tfidf pkl
+#     ================== DONE ================= testing function before writing both pickle files that returns accuracy and confirms if you want to write it
+#     ================== DONE ================= also check most useful features of the classifier and check how useful game of thrones is as a feature
+#     ================== DONE =================  also, crawl for seperate test data and document code
 
 if (__name__ == "__main__"):
     main()

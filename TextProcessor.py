@@ -12,7 +12,7 @@ class TextProcessor():
         print "Calculating TFIDFs."
         
         if (train):
-            tfidfVec = TfidfVectorizer(ngram_range=(1,3), stop_words='english')
+            tfidfVec = TfidfVectorizer(ngram_range=(1,1), stop_words='english')
             tfidfs = tfidfVec.fit_transform(rawDocs)
             if (writeToFile):
                 print "Writing TFIDF pickle file."

@@ -49,14 +49,14 @@ def analyzeArticlesFromList():
       for line in f:
         #print(line),  
         category = line.split('/')[3] # CATEGORY NAME
-        if (category == "sport"):
+        if (category == "world"):
             articleInfo = getArticleInfo(line)
             
             if (articleInfo is False):
                 continue
             print(articleInfo[0])
             try :
-                fw = open("sport/" + articleInfo[0] + ".txt", "w")
+                fw = open("world/" + articleInfo[0] + ".txt", "w")
             except IOError, e:
                 print("Unable to open previous article. IOError. %s" % e)
                 continue
