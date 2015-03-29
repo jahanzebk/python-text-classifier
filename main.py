@@ -69,22 +69,26 @@ def test_SK_NB_classification():
     
     docCats = [doc.category for doc in testDocs]
     [tfidfVec, tfidfs] = TP.SK_NB_calcTFIDFs(testDocs)
+    uniqueCats = nbClassifier.uniqify(docCats)
     
     print "Loading Classifier."
-    clf = joblib.load("pickles/SK_classifier.pkl")
-    nbClassifier.printImpWords(tfidfVec, clf, None, clf.classes_, 50)
-    nbClassifier.showMistakes(clf, testDocs, tfidfs, clf.classes_)
-    print "Accuracy: "
-    print clf.score(tfidfs, docCats)
+    clf = joblib.load("pickles/SK_NB/SK_classifier.pkl")
+#     nbClassifier.printImpWords(tfidfVec, clf, None, clf.classes_, 50)
+#     nbClassifier.showMistakes(clf, testDocs, tfidfs, clf.classes_)
+#     print "Accuracy: "
+#     print clf.score(tfidfs, docCats)
+    nbClassifier.SK_NB_accuracy(clf, tfidfVec, None, True, True, uniqueCats)
     
     
 #     todo list:  
-#     organize pickles
+#     ================== DONE ================= organize pickles
 #     find precision recall and f score in accuracy functions and maybe try use it to make better decisions
+ #    decide how to move on based on fscore results (imbalanced) and wikipedia db
+#     cleanup project and make sub folders
 #     use pipeline instead
 #     look into the hashingVector big data problem
 #     figure out with partial_fit
-#     make SGDClassifier, test it
+#     make passive agressive, test it
 #     then fix up NLTK classifiers make sure they work with joblib, 
 #     look into a hiearichal classification with partial_fit()
 #     give accuracy on a test set, keep sperate test sets eg first10daysofJuly

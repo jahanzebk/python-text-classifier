@@ -5,7 +5,7 @@ import Document as Doc
 from TextProcessor import TextProcessor as TP
 
 from sklearn.naive_bayes import MultinomialNB
-
+from sklearn.metrics import *
 
 class Classifier():
     def SK_NB_train(self, trainDir):
@@ -25,16 +25,17 @@ class Classifier():
         
         
         self.SK_NB_accuracy(clf, tfidfVec, None, False, True, uniqueCats)
+        
         save = raw_input("Would you like to pickle (save) classifier and TFIDFs? (y|n): ")
         
         if (save == 'y'):
             from sklearn.externals import joblib
             print "Writing Classifier to file."
-            joblib.dump(clf, "pickles/SK_classifier.pkl")
+            joblib.dump(clf, "pickles/SK_NB/SK_classifier.pkl")
             del(clf)
             
             print "Writing TFIDF pickle file."
-            joblib.dump(tfidfVec, "pickles/SK_Tfidfs.pkl")
+            joblib.dump(tfidfVec, "pickles/SK_NB/SK_Tfidfs.pkl")
             del(tfidfVec)
         else:
             return clf
@@ -63,9 +64,21 @@ class Classifier():
             self.printImpWords(tfidfVec, clf, None, class_labels, 50)
             
         print "Accuracy: ", clf.score(tfidfs, docCats) * 100
+        self.PRF(docCats, clf, tfidfs)
+        
         
         # Clean up            
         del(docCats)
+        
+    def PRF(self, y_true, clf, tfidfs, average="micro"):
+        from sklearn.metrics import precision_recall_fscore_support as prfs
+        
+        
+        y_pred = clf.predict(tfidfs)
+        
+        print f1_score(y_true, y_pred)
+        print("confusion matrix:")
+        print(confusion_matrix(y_true, y_pred))
         
     def showMistakes(self, clf, testDocs, tfidfs, class_labels):
         for i in range(len(testDocs)):

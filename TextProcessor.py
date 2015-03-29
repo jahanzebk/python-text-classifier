@@ -16,10 +16,10 @@ class TextProcessor():
             tfidfs = tfidfVec.fit_transform(rawDocs)
             if (writeToFile):
                 print "Writing TFIDF pickle file."
-                joblib.dump(tfidfVec, "pickles/SK_Tfidfs.pkl")
+                joblib.dump(tfidfVec, "pickles/SK_NB/SK_Tfidfs.pkl")
         else:
             print "Loading TFIDF pickle file."
-            tfidfVec = joblib.load("pickles/SK_Tfidfs.pkl")
+            tfidfVec = joblib.load("pickles/SK_NB/SK_Tfidfs.pkl")
             tfidfs = tfidfVec.transform(rawDocs)
         print "TFIDFs calculated."
         return [tfidfVec, tfidfs]
